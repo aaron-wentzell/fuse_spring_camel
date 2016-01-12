@@ -18,5 +18,5 @@
     <to uri="stream:out" />
 </route>
 </camelContext>
-<bean id="myBean" class="com.javacodegeeks.camel.MyBean"/>
+<bean id="myBean" class="com.mdw360.bean.TestRouteBean"/>
 </beans>

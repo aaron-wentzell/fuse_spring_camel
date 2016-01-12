@@ -5,6 +5,7 @@ package com.mdw360.bean;
  */
 public class TestRouteBean {
     public String appendCamel(String msg) {
+        System.out.println("IN APPEND CAMEL");
         return msg + " Camel";
     }
 
