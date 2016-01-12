@@ -14,32 +14,32 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class SpringCamelHelloWorld {
     public static void main (String[] args) throws Exception {
-//        ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-//        CamelContext camelContext = SpringCamelContext.springCamelContext(appContext, false);
-//        try {
-//            ProducerTemplate template = camelContext.createProducerTemplate();
-//            camelContext.start();
-//            template.sendBody("activemq:test.queue", "Hello World");
-//        } finally {
-//            camelContext.stop();
-//        }
-
-        CamelContext context = new DefaultCamelContext();
+        ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        CamelContext camelContext = SpringCamelContext.springCamelContext(appContext, false);
         try {
-            context.addRoutes(new RouteBuilder() {
-                @Override
-                public void configure() throws Exception {
-                    from("timer://myTimer?period=2000")
-                            .setBody()
-                            .simple("Hello World Camel fired at ${header.firedTime}")
-                            .to("stream:out");
-                }
-            });
-            context.start();
-            Thread.sleep(10000);
+            ProducerTemplate template = camelContext.createProducerTemplate();
+            camelContext.start();
+            template.sendBody("activemq:test.queue", "Hello World");
         } finally {
-            context.stop();
+            camelContext.stop();
         }
+
+//        CamelContext context = new DefaultCamelContext();
+//        try {
+//            context.addRoutes(new RouteBuilder() {
+//                @Override
+//                public void configure() throws Exception {
+//                    from("timer://myTimer?period=2000")
+//                            .setBody()
+//                            .simple("Hello World Camel fired at ${header.firedTime}")
+//                            .to("stream:out");
+//                }
+//            });
+//            context.start();
+//            Thread.sleep(10000);
+//        } finally {
+//            context.stop();
+//        }
 
 
     }
