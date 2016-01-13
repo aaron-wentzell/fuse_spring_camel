@@ -36,7 +36,7 @@ public class SpringCamelHelloWorld {
                 }
             });
             context.start();
-            Thread.sleep(10000);
+            Thread.sleep(1000000);
         } finally {
             context.stop();
         }
